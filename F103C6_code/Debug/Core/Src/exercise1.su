@@ -1,0 +1,4 @@
+exercise1.c:5:6:init_exercise1	4	static
+exercise1.c:8:6:led_on	8	static
+exercise1.c:12:6:led_off	8	static
+exercise1.c:16:6:exercise1_run	8	static
