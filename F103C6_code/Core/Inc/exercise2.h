@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-#define LED_OFF GPIO_PIN_RESET	//because GPIO pin connect to postive pin of LED
+#define LED_OFF GPIO_PIN_RESET	//because GPIO pin connect to positive pin of LED
 #define LED_ON GPIO_PIN_SET
 
 #define GREEN_TIME 3

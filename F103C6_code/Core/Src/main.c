@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "exercise4.h"
+#include "exercise5.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -86,20 +86,14 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  init_exercise4(SEG_0_GPIO_Port, SEG_0_Pin,
-		  	  	 SEG_1_GPIO_Port, SEG_1_Pin,
-				 SEG_2_GPIO_Port, SEG_2_Pin,
-				 SEG_3_GPIO_Port, SEG_3_Pin,
-				 SEG_4_GPIO_Port, SEG_4_Pin,
-				 SEG_5_GPIO_Port, SEG_5_Pin,
-				 SEG_6_GPIO_Port, SEG_6_Pin);
+  init_exercise5();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE	 */
   while (1)
   {
-	  exercise4_run();
+	  exercise5_run();
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */

@@ -1,7 +1,7 @@
 #include "exercise4.h"
 
 sevenSEG_ANODE_t LED_segment;
-uint8_t counter = 0;
+int8_t counter = 0;
 void init_exercise4(GPIO_TypeDef *A_GPIOx, uint16_t A_Pin,
 					GPIO_TypeDef *B_GPIOx, uint16_t B_Pin,
 					GPIO_TypeDef *C_GPIOx, uint16_t C_Pin,
@@ -81,6 +81,6 @@ void execute_7SEG_LED(SEG_state state){
 }
 
 void exercise4_run(){
-	if(counter >= 10) counter = 0;
-	execute_7SEG_LED((SEG_state)counter++);
+	if(counter < 0) counter = 9;
+	execute_7SEG_LED(counter--);
 }
