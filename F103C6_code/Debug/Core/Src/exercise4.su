@@ -1,0 +1,4 @@
+exercise4.c:5:6:init_exercise4	24	static
+exercise4.c:34:6:display7SEG	24	static
+exercise4.c:45:6:execute_7SEG_LED	32	static
+exercise4.c:83:6:exercise4_run	8	static
