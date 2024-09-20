@@ -12,8 +12,6 @@ void clearAllClock ();
 void setNumberOnClock(int8_t num);
 void clearNumberOnClock(int8_t num);
 void exercise10_run();
-uint8_t second_run();
-uint8_t minute_run();
 
 
 #endif

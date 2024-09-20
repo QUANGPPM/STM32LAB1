@@ -6,6 +6,9 @@ uint8_t minute = 0;
 uint8_t second_LED = 0;
 uint8_t minute_LED = 0;
 uint8_t hour_LED = 0;
+uint8_t old_second_LED = 0;
+uint8_t old_minute_LED = 0;
+uint8_t old_hour_LED = 0;
 
 void clearAllClock() {
 	HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, LED_OFF);
@@ -79,18 +82,34 @@ void init_exercise6_to_10(){
 }
 
 
+void set_led_to_clock(){
+	//clear
+	if(old_second_LED != second_LED){
+		clearNumberOnClock(old_second_LED);
+		old_second_LED = second_LED;
+	}
+	if(minute_LED != old_minute_LED){
+		clearNumberOnClock(old_minute_LED);
+		old_minute_LED = minute_LED;
+	}
+	if(hour_LED != old_hour_LED){
+		clearNumberOnClock(old_hour_LED);
+		old_hour_LED = hour_LED;
+	}
 
+	//set
+	setNumberOnClock(second_LED);
+	setNumberOnClock(minute_LED);
+	setNumberOnClock(hour_LED);
+}
 uint8_t second_run(){
+	//increase second
 	second++;
+	//update LED
 	if(second % 5 == 0){
 		second_LED = second/5;
-		// clear pre_state of Second led
-		clearNumberOnClock(second_LED-1);
-		//update new state for second, minute, hour led
-		setNumberOnClock(second_LED);
-		setNumberOnClock(minute_LED);
-		setNumberOnClock(hour_LED);
 	}
+	//update infor to minute_run()
 	if(second >= 60)
 	{
 		second = 0;
@@ -103,16 +122,13 @@ uint8_t minute_run(){
 
 	if(second_run())
 	{
+		//increase minute
 		minute++;
+		//update LED
 		if(minute % 5 == 0){
 			minute_LED = minute/5;
-			// clear pre_state of minute led
-			clearNumberOnClock(minute_LED-1);
-			//update new state for second, minute, hour led
-			setNumberOnClock(second_LED);
-			setNumberOnClock(minute_LED);
-			setNumberOnClock(hour_LED);
 		}
+		//update infor to hour_run()
 		if(minute >= 60)
 		{
 			minute = 0;
@@ -122,16 +138,10 @@ uint8_t minute_run(){
 	}
 	return 0;
 }
-uint8_t hour_run(){
+uint8_t clock_count(){
 	if(minute_run())
 	{
 		hour_LED++;
-		// clear pre_state of minute led
-		clearNumberOnClock(hour_LED-1);
-		//update new state for second, minute, hour led
-		setNumberOnClock(second_LED);
-		setNumberOnClock(minute_LED);
-		setNumberOnClock(hour_LED);
 
 		if(hour_LED >= 11)
 		{
@@ -142,7 +152,8 @@ uint8_t hour_run(){
 	return 0;
 }
 void exercise10_run(){
-	hour_run();
+	clock_count();
+	set_led_to_clock();
 }
 
 
