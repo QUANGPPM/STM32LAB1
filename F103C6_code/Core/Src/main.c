@@ -95,7 +95,7 @@ int main(void)
   {
 	  exercise10_run();
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	  HAL_Delay(10);
+	  HAL_Delay(20);
 
     /* USER CODE END WHILE */
 

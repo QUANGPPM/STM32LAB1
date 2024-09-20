@@ -627,8 +627,8 @@ int main(void)
  80004b0:	2120      	movs	r1, #32
  80004b2:	4803      	ldr	r0, [pc, #12]	; (80004c0 <main+0x28>)
  80004b4:	f000 fc2a 	bl	8000d0c <HAL_GPIO_TogglePin>
-	  HAL_Delay(10);
- 80004b8:	200a      	movs	r0, #10
+	  HAL_Delay(20);
+ 80004b8:	2014      	movs	r0, #20
  80004ba:	f000 f98d 	bl	80007d8 <HAL_Delay>
 	  exercise10_run();
  80004be:	e7f5      	b.n	80004ac <main+0x14>
